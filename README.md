@@ -1,4 +1,4 @@
-# 22-002-12
+# TP CALCULADORA
 Integrantes : 
-  Gonzalo Schaller 1756930
+  Gonzalo Schaller 175.693-0
   Agustin Neustadt 203.895-0
