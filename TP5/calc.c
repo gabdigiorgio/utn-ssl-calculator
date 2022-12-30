@@ -8,23 +8,23 @@
 
 
 
-dictionary *putsym (char const *sym_name, int sym_type)
+diccionario *ponerSimbolo (char const *sim_nombre, int sim_tipo)
 
 {
 
-  dictionary *ptr = (dictionary *) malloc (sizeof (dictionary));
+  diccionario *ptr = (diccionario *) malloc (sizeof (diccionario));
 
-  ptr->name = (char *) malloc (strlen (sym_name) + 1);
+  ptr->nombre = (char *) malloc (strlen (sim_nombre) + 1);
 
-  strcpy (ptr->name,sym_name);
+  strcpy (ptr->nombre,sim_nombre);
 
-  ptr->type = sym_type;
+  ptr->tipo = sim_tipo;
 
-  ptr->value.var = 0;
+  ptr->valor.nro = 0;
 
-  ptr->next = (struct dictionary *)sym_table;
+  ptr->sgte = (struct diccionario *)sim_tabla;
 
-  sym_table = ptr;
+  sim_tabla = ptr;
 
   return ptr;
 
@@ -32,17 +32,17 @@ dictionary *putsym (char const *sym_name, int sym_type)
 
 
 
-dictionary *getsym (char const *sym_name)
+diccionario *obtenerSimbolo (char const *sim_nombre)
 
 {
 
-  dictionary *ptr;
+  diccionario *ptr;
 
-  for (ptr = sym_table; ptr != (dictionary *) 0;
+  for (ptr = sim_tabla; ptr != (diccionario *) 0;
 
-       ptr = (dictionary *)ptr->next)
+       ptr = (diccionario *)ptr->sgte)
 
-    if (strcmp (ptr->name, sym_name) == 0)
+    if (strcmp (ptr->nombre, sim_nombre) == 0)
 
       return ptr;
 
