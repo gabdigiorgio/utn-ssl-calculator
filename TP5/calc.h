@@ -4,11 +4,11 @@
 
 
 
-#define TYP_VAR 0
+#define TIPO_VAR 0
 
-#define TYP_CTE 1
+#define TIPO_CTE 1
 
-#define TYP_FNCT 2
+#define TIPO_FUN 2
 
 
 
@@ -16,31 +16,31 @@ typedef double (*fun) (double);
 
 
 
-typedef struct dictionary {
+typedef struct diccionario {
 
-	char *name;
+	char *nombre;
 
-	int type; //Tres tipos: TYP_VAR, TYP_CTE, TYP_FNCT
+	int tipo; //Tres tipos: TIPO_VAR, TIPO_CTE, TIPO_FUN
 
 	union {
 
-		double var;
+		double nro;
 
 		fun functptr; //Puntero a funcion
 
-	} value;
+	} valor;
 
-	struct dictionary *next;
+	struct diccionario *sgte;
 
-} dictionary;
+} diccionario;
 
 
 
-extern dictionary *sym_table;
+extern diccionario *sim_tabla;
 
-dictionary *putsym (char const *, int);
+diccionario *ponerSimbolo (char const *, int);
 
-dictionary *getsym (char const *);
+diccionario *obtenerSimbolo (char const *);
 
 
 
