@@ -108,7 +108,7 @@ expresion : 		   CONSTANTE_REAL				{$$ = $1;}
 
                          | ID						{ aux=obtenerSimbolo($<str>1); if (aux) { $$=(aux->valor.nro)    ;} else { printf("ID %s no declarado\n",$1); YYERROR; } }
 
-			 | ID '=' expresion				{ aux=obtenerSimbolo($<str>1); if (aux) { if(aux->tipo == TIPO_VAR) { $$=(aux->valor.nro)+=$3 ;} else { printf("Los operadores de asignación solo admiten una variable como operanado izquierdo \n"); YYERROR;} } else { printf("ID %s no declarado\n",$1); YYERROR; } }
+			 | ID '=' expresion				{ aux=obtenerSimbolo($<str>1); if (aux) { if(aux->tipo == TIPO_VAR) { $$=(aux->valor.nro)=$3 ;} else { printf("Los operadores de asignación solo admiten una variable como operanado izquierdo \n"); YYERROR;} } else { printf("ID %s no declarado\n",$1); YYERROR; } }
 
 			 | VAR ID					{ aux=obtenerSimbolo($<str>2); if (aux) { if(aux->tipo == TIPO_VAR) { printf("Error, identificador ya declarado como variable \n"); YYERROR; } else if(aux->tipo == TIPO_CTE) { printf("Error, identificador ya declarado como constante \n"); YYERROR; } else $$=(aux->valor.nro) ;} else { aux=ponerSimbolo(strdup($2),TIPO_VAR); $$=(aux->valor.nro)=0 ;} }
 
